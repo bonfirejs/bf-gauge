@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   // SVG attributes
   tagName: 'svg',
   attributeBindings: ['viewBox', 'width'],
-  viewBox: '0 0 90 72',
+  viewBox: '0 0 84 68',
   width: '100%',
 
   // Default parameters
@@ -23,7 +23,7 @@ export default Ember.Component.extend({
   percentage: Ember.computed('ratio', function() {
     return (this.get('ratio') * 100).toFixed(0) + '%';
   }),
-  xOffset: 45,
+  xOffset: 42,
   yOffset: 56,
   ax: Ember.computed('ratio', function() {
     return -40 * Math.cos(this.get('ratio') * Math.PI).toFixed(5) + this.get('xOffset');
