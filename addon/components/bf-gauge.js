@@ -17,8 +17,10 @@ export default Ember.Component.extend({
   color: '#337ab7',
 
   // Computed properties
-  ratio: Ember.computed('value', 'max', function() {
-    return (Math.max(0, this.get('value') - this.get('min'))) / Math.max(0, this.get('max') - this.get('min'));
+  ratio: Ember.computed('value', 'min', 'max', function() {
+    if (!isFinite(this.get('value')) || !isFinite(this.get('min')) || !isFinite(this.get('max'))) return 0;
+    var ratio = (Math.max(0, this.get('value') - this.get('min'))) / Math.max(0, this.get('max') - this.get('min'));
+    return Math.min(1, ratio);
   }),
   percentage: Ember.computed('ratio', function() {
     return (this.get('ratio') * 100).toFixed(0) + '%';
@@ -26,15 +28,19 @@ export default Ember.Component.extend({
   xOffset: 42,
   yOffset: 56,
   ax: Ember.computed('ratio', function() {
-    return -40 * Math.cos(this.get('ratio') * Math.PI).toFixed(5) + this.get('xOffset');
+    var radians = this.get('ratio') * Math.PI;
+    return -40 * Math.cos(radians).toFixed(5) + this.get('xOffset');
   }),
   ay: Ember.computed('ratio', function() {
-    return -40 * Math.sin(this.get('ratio') * Math.PI).toFixed(5) + this.get('yOffset');
+    var radians = this.get('ratio') * Math.PI;
+    return -40 * Math.sin(radians).toFixed(5) + this.get('yOffset');
   }),
   bx: Ember.computed('ratio', function() {
-    return -25 * Math.cos(this.get('ratio') * Math.PI).toFixed(5) + this.get('xOffset');
+    var radians = this.get('ratio') * Math.PI;
+    return -25 * Math.cos(radians).toFixed(5) + this.get('xOffset');
   }),
   by: Ember.computed('ratio', function() {
-    return -25 * Math.sin(this.get('ratio') * Math.PI).toFixed(5) + this.get('yOffset');
+    var radians = this.get('ratio') * Math.PI;
+    return -25 * Math.sin(radians).toFixed(5) + this.get('yOffset');
   }),
 });
