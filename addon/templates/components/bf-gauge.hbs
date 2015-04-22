@@ -1,0 +1,16 @@
+<defs>
+  <filter id="bf-gauge-inset-shadow">
+    <feOffset dx="0" dy="1"></feOffset>
+    <feGaussianBlur result="offset-blur" stdDeviation="2"></feGaussianBlur>
+    <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite>
+    <feFlood flood-color="black" flood-opacity="0.2" result="color"></feFlood>
+    <feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite>
+    <feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite>
+  </filter>
+</defs>
+<path fill="#ebebeb" d="M20,56 L5,56 A40,40,0,0,1,85,56 L70,56 A25,25,0,0,0,20,56 Z" filter="url(#bf-gauge-inset-shadow)" />
+<path fill="#337ab7" d="M20,56 L5,56 A40,40,0,0,1,45,16 L45,31 A25,25,0,0,0,20,56 Z" />
+<text x="45" y="11" text-anchor="middle" fill="#989898" font-family="'Helvetica Neue', Helvetica, Arial" font-size="10">Gauge</text>
+<text x="45" y="55" text-anchor="middle" fill="#020202" font-family="'Helvetica Neue', Helvetica, Arial" font-size="16">50</text>
+<text x="13" y="67" text-anchor="middle" fill="#B4B4B4" font-family="''Helvetica Neue', Helvetica, Arial" font-size="8">0</text>
+<text x="77" y="67" text-anchor="middle" fill="#B4B4B4" font-family="'Helvetica Neue', Helvetica, Arial" font-size="8">100</text>
